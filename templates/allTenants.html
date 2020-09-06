@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>所有租客信息</title>
+</head>
+<body>
+    <table align ="cener" style="border-collapse:collapse;" border="1">
+        <tr>
+             <th>租客姓名</th>
+             <th>租客电话</th>
+             <th>房号</th>
+             <th>承租日期</th>
+             <th>到期日期</th>
+        </tr>
+        {% for result in results %}
+            <tr>
+             <td>{{ result[1] }}</td>
+             <td>{{ result[2] }}</td>
+             <td>{{ result[3] }}</td>
+             <td>{{ result[4] }}</td>
+             <td>{{ result[5] }}</td>
+            </tr>
+
+        {% endfor %}
+
+
+
+    </table>
+
+</body>
+</html>

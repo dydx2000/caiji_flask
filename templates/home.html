@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>查询第一个租客</title>
+
+    <style>
+        table {
+            margin: auto
+        }
+    </style>
+
+</head>
+<body>
+<h1 align="center">租客管理系统</h1>
+<form align='center' name="form" action="http://127.0.0.1:5000/getfirst" method="get">
+    租客姓名
+    <input type="text" name="Tname" id="tenantName"/>
+    {#        <input type="button" value="查询" id="btn" />#}
+    电话
+    <input type="text" name="Tphone" id="Tphone">
+    房号
+    <input type="text" name="Troom" id="Troom">
+    <input type="button" value="查询" id="all">
+    <input type="button" value="新增" id="addnew">
+
+</form>
+
+<br><br>
+
+
+{% block MainContainer %}
+
+{% endblock %}
+
+<script type="text/javascript">
+    {#var  check = document.getElementById('btn');#}
+    var Tname = document.getElementById('tenantName');
+    var allbtn = document.getElementById('all')
+    var Tphone = document.getElementById("Tphone");
+    var Troom = document.getElementById("Troom");
+    var addnew = document.getElementById("addnew")
+
+
+    allbtn.onclick = function () {
+        Tname = Tname.value;
+        Tphone = Tphone.value;
+        Troom = Troom.value;
+        document.form.action = "http://127.0.0.1:5000/getAll"
+        document.form.submit()
+    }
+
+    addnew.onclick = function () {
+        self.location.href = "http://127.0.0.1:5000/addNew"
+    }
+
+</script>
+
+{% block script %}
+
+{% endblock %}
+</body>
+</html>

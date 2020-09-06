@@ -1,0 +1,53 @@
+{% extends 'home.html' %}
+
+
+{% block MainContainer %}
+
+    <form align="center" action="#" id='addform' method="get">
+
+        姓名 <input type="text" id="addname"><br>
+        手机 <input type="text" id="addphone"><br>
+        房号 <input type="text" id="addroom"><br>
+        承租日期 <input type="text" id="addstart"><br>
+        到期日期 <input type="text" id="addend"><br>
+        <input type="button" value="保存" , id="savebtn">
+        <input type="button" value="取消" ,id="cancelbtn">
+
+    </form>
+{% endblock %}
+
+
+{% block script %}
+    <script type="text/javascript">
+
+        var addname = document.getElementById("addname")
+        var addphone = document.getElementById('addphone')
+        var addroom = document.getElementById('addroom')
+        var addstart = document.getElementById("addstart")
+        var addstart = document.getElementById("addend")
+        var savebtn = document.getElementById('savebtn')
+        var cancelbtn = document.getElementById("cancelbtn")
+
+        var addform = document.getElementById("addform")
+
+        savebtn.onclick = function () {
+
+            var add_name = addname.value;
+
+
+            var add_phone = document.getElementById("addphone").value
+            {#addphone=addphone.value;#}
+            addroom = addroom.value;
+            addstart = addstart.value;
+            addend = addend.value;
+
+            addform.action = "http://127.0.0.1:5000/save";
+            addform.submit()
+
+        }
+
+    </script>
+
+
+{% endblock %}
+

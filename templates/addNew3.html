@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <form align='center' name="form" action="http://127.0.0.1:5000/save">
+        姓名 <input type="text" id="addname"><br>
+        手机 <input type="text" id="addphone"><br>
+        房号 <input type="text" id="addroom"><br>
+        承租日期 <input type="text" id="addstart"><br>
+        到期日期 <input type="text" id="addend"><br>
+        <input type="button" value="保存"  id="savebtn">
+        <input type="button" value="取消"  id="cancelbtn">
+    </form>
+
+<script type="text/javascript">
+    {#var  check = document.getElementById('btn');#}
+    var Addname = document.getElementById('addname');
+
+    savebtn.onclick = function () {
+        Addname = Addname.value;
+
+        document.form.action = "http://127.0.0.1:5000/save"
+        document.form.submit()
+    }
+
+</script>
+
+
+
+</body>
+</html>
