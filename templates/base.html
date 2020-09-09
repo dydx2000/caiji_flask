@@ -2,7 +2,12 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>租客管理系统</title>
+
+        {% block title %}
+
+
+        {% endblock %}
+
 
     <style>
         table {
@@ -13,57 +18,33 @@
     text-align:center;
 
         }
-        .page {
-            margin:auto;
-            padding: 20px;
-            width: 600px;
-            float: right;
-        }
-        .login{
-            color:red;
-            float: right;
-
-
-        }
-        .logout{
-            color:blue;
-            float: right;
-        }
-
-        #outer{
-            width: 1115px;
-            margin:auto;
-        }
 
     </style>
 
 </head>
 <body>
-<div id="outer">
-<div>
-    {% if cookie=="yes" %}
-        <div class="login">已登录</div>
 
-    {% else %}
 
-        <div class="logout">请登录</div>
-    {% endif %}
-</div>
-<h1 align="center">租客管理系统</h1>
+{% block H1 %}
 
-<form align='center' name="form" action="#" method="get">
+{% endblock  %}
+
+{% block form %}
+
+<form align='center' name="form" action="http://127.0.0.1:5000/getfirst" method="get">
     租客姓名
     <input type="text" name="Tname" id="tenantName"/>
-
+    {#        <input type="button" value="查询" id="btn" />#}
     电话
     <input type="text" name="Tphone" id="Tphone">
     房号
     <input type="text" name="Troom" id="Troom">
-    <input type="button" value="查询" id="all" style="background: powderblue;outline:none;border:0">
-    <input type="button" value="新增" id="addnew"  style="background: powderblue;outline:none;border:0">
-
+    <input type="button" value="查询" id="all">
+    <input type="button" value="新增" id="addnew">
 
 </form>
+
+{% endblock %}
 
 <br><br>
 
@@ -73,7 +54,7 @@
 {% endblock %}
 
 <script type="text/javascript">
-    var  check = document.getElementById('btn');
+    {#var  check = document.getElementById('btn');#}
     var Tname = document.getElementById('tenantName');
     var allbtn = document.getElementById('all')
     var Tphone = document.getElementById("Tphone");
@@ -95,15 +76,8 @@
 
 </script>
 
-<div class="page">
- 分页大小<input type="text"  name="pagesize"  style="width:15px">    第几页 <input type="text" name="pagenumber" style="width:15px">
-
-</div>
-
 {% block script %}
 
 {% endblock %}
-
-</div>
 </body>
 </html>

@@ -1,13 +1,35 @@
-from flask import Flask,render_template,request
+from flask import Flask,render_template,request,url_for,redirect
 import pymysql
 app = Flask (__name__)
 
-conn = pymysql.connect("localhost",'root','0329','renthouse',charset='utf8')
+conn = pymysql.connect("localhost",'root','123456','renthouse',charset='utf8')
 cursor = conn.cursor()
 
+cookie ="no"
+
 @app.route ('/')
-def hello_world():
-    return render_template('home.html')
+def home():
+    global cookie
+    if cookie=='yes':
+        return render_template('home.html',cookie=cookie)
+    else:
+
+        if request.values.get("username")=="dydx" and request.values.get("password")=="123":
+
+            cookie="yes"
+            return render_template('home.html',cookie=cookie)
+        else:
+            return redirect("/login")
+
+
+@app.route('/login')
+def login():
+    if cookie=="yes":
+        return redirect("http://127.0.0.1:5000/")
+    else:
+        return render_template('login.html')
+
+
 
 @app.route ('/getfirst')  #nouse
 def getFirstTenant():
@@ -52,50 +74,69 @@ def getFirstTenant():
 
 @app.route ('/getAll')
 def getAllTenant():
-    tenantName = request.args.get ("Tname")
-    print(tenantName)
-    tenantName = "%" + tenantName +"%"
+    if cookie=="yes":
+        # pagesize =request.args.get('pagesize')
+        # pagesize=int(pagesize)
+        # pagenumber=request.args.get('pagenumber')
+        # pagenumber=int(pagenumber)
+        tenantName = request.args.get ("Tname")
+        print(tenantName)
+        tenantName = "%" + tenantName +"%"
 
-    tenantPhone = request.args.get ("Tphone")
-    tenantPhone = "%" + tenantPhone +"%"
+        tenantPhone = request.args.get ("Tphone")
+        tenantPhone = "%" + tenantPhone +"%"
 
-    tenantRoom = request.args.get ("Troom")
-    tenantRoom = "%" + tenantRoom +"%"
+        tenantRoom = request.args.get ("Troom")
+        tenantRoom = "%" + tenantRoom +"%"
 
-    sql = "select * from tenant"
-    sql = "select * from tenant where 姓名 like '%s' and 手机 like '%s' and 房间号 like '%s';" % (tenantName,tenantPhone,
-                                                                                           tenantRoom)
-    print (sql)
-    cursor.execute (sql)
+        sql = "select * from tenant"
+        #sql = "select * from tenant where 姓名 like '%s' and 手机 like '%s' and 房间号 like '%s' limit %s, %s;" % (tenantName,tenantPhone,
+        #                                                                                       tenantRoom,(pagenumber-1)*pagesize,pagesize)
 
-    try:
-        results = cursor.fetchall ()
-        print (results)
+        sql = "select * from tenant where 姓名 like '%s' and 手机 like '%s' and 房间号 like '%s';" % (
+        tenantName, tenantPhone,
+        tenantRoom)
+        print (sql)
+        cursor.execute (sql)
 
-    except:
-        pass
+        try:
+            results = cursor.fetchall ()
+            print (results)
 
-    return render_template('queryAll.html',results = results)
+        except:
+            pass
+
+        return render_template('queryAll.html',i=0,results = results,cookie=cookie)
+    else:
+        return redirect("/login")
 
 @app.route('/addNew')
 def addNew():
-
-    return render_template('addNew3.html')
+    if cookie == "yes":
+        return render_template('addNew.html',cookie=cookie)
+    else:
+        return redirect("/login")
 
 @app.route('/save')
 def save():
 
-    addname=request.args.get("Addname")
+    addname=request.args.get("addname")
     print(addname)
-
-
+    addphone=request.args.get("addphone")
     addroom=request.args.get("addroom")
-    print(addroom)
-    # addstart=request.args.get("addstart")
-    # addend=request.args.get("addend")
+    addstart=request.args.get("addstart")
+    addend=request.args.get("addend")
+
+    insertSQL='''
+    
+    insert into tenant (姓名,手机,房间号,承租日期,到期日期) values("%s","%s","%s","%s","%s")
+    ''' % (addname,addphone,addroom,addstart,addend);
+    cursor.execute(insertSQL)
+    conn.commit()
+    # conn.close()
 
     if addname!=None:
-        return "done"
+        return  redirect("http://127.0.0.1:5000/getAll?Tname=&Tphone=&Troom=")
     else:
         return "failure"
 

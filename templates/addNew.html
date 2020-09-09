@@ -3,16 +3,17 @@
 
 {% block MainContainer %}
 
-    <form align="center" action="#" id='addform' method="get">
+    <body>
+    <form align='center' name="form2" action="http://127.0.0.1:5000/save">
+        <table>
+            <tr><td>姓名</td><td><input type="text" name="addname" id="addname"></td></tr>
+            <tr><td>手机</td><td><input type="text" name="addphone" id="addphone"></td></tr>
+            <tr><td>房号</td><td><input type="text" name="addroom" id="addroom"></td></tr>
+            <tr><td>承租日期</td><td><input type="text" name="addstart" id="addstart"></td></tr>
+            <tr><td>到期日期</td><td><input type="text" name="addend" id="addend"></td></tr>
+            <tr><td></td><td><input type="submit" value="保存"  id="savebtn">  <input type="button" value="取消"  id="cancelbtn"></td></tr>
 
-        姓名 <input type="text" id="addname"><br>
-        手机 <input type="text" id="addphone"><br>
-        房号 <input type="text" id="addroom"><br>
-        承租日期 <input type="text" id="addstart"><br>
-        到期日期 <input type="text" id="addend"><br>
-        <input type="button" value="保存" , id="savebtn">
-        <input type="button" value="取消" ,id="cancelbtn">
-
+        </table>
     </form>
 {% endblock %}
 
