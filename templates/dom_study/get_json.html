@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+        table {
+            margin: auto
+        }
+        td {
+
+    text-align:center;
+
+        }
+        .page {
+            margin:auto;
+            padding: 20px;
+            width: 600px;
+            float: right;
+        }
+        .login{
+            color:red;
+            float: right;
+
+
+        }
+        .logout{
+            color:blue;
+            float: right;
+        }
+
+        #outer{
+            width: 1115px;
+            margin:auto;
+        }
+
+    </style>
+
+</head>
+<body>
+<input type="button" value="测试" id="test" >
+<input type="button" value="测试2" id="test2" >
+<br>
+<br>
+<br>
+
+<table id="table1" style="font-size:13px;border-collapse:collapse;" align ="cener"  border="1" width="80%"></table>
+<script src="../../static/jquery-3.4.1.js"></script>
+
+<script>
+    var table1 =document.getElementById("table1")
+    var test= document.getElementById('test')
+
+    var test2 = document.getElementById('test2')
+    test.onclick=function (){
+        $.ajax({
+            url:"/apitest",
+            type:"get",
+            dataType:"json",
+            success: function(data) {
+                console.log(data);
+                alert(data)
+            },
+            error: function(XMLHttpRequest, textStatus, errorThrown) {
+                alert(XMLHttpRequest.status);
+                alert(XMLHttpRequest.readyState);
+                alert(textStatus);
+            },
+        })
+        }
+
+    test2.onclick=function () {
+
+
+
+
+        $.ajax({
+            url:"/apitest2",
+            type:"get",
+            dataType:"json",
+            success: function(data) {
+                console.log(data);
+                console.log(data[1])
+                var th = "<tr>\n" +
+                    "             <th>姓名</th>\n" +
+                    "             <th>年龄</th>\n" +
+                    "             <th>学校</th>\n" +
+                    "        </tr>"
+
+                var trs =""
+                function addtds() {
+
+                    for(var i=0;i<data.length;i++) {
+                        var tr ="<tr><td>"+data[i]['name'] +"</td>"+  "<td>"+data[i]['age']+"</td>"+  "<td>"+data[i]['school']+"</td></tr>"
+                        trs=trs+tr
+                    }
+                    return trs
+                }
+                trs=addtds();
+
+                table1.innerHTML=th+trs;
+
+            },
+
+        })
+    }
+
+</script>
+
+
+</body>
+</html>

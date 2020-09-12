@@ -1,8 +1,8 @@
-from flask import Flask,render_template,request,url_for,redirect
+from flask import Flask,render_template,request,url_for,redirect,jsonify,json,Response
 import pymysql
 app = Flask (__name__)
 
-conn = pymysql.connect("localhost",'root','123456','renthouse',charset='utf8')
+conn = pymysql.connect("dingo1981.xyz",'root','0329','renthouse',charset='utf8',port=8306)
 cursor = conn.cursor()
 
 cookie ="no"
@@ -31,50 +31,12 @@ def login():
 
 
 
-@app.route ('/getfirst')  #nouse
-def getFirstTenant():
 
-    # list1 =list(result)
-    # return "第一位租客: %s, 手机号码： %s"%(result[1],result[2])
-    # 先从前台页面获取到租客姓名
-    tenantName=request.args.get("Tname")
-    print(tenantName)
-
-    # 通过租客姓名查询租客相关资料
-    sql = "select * from tenant where 姓名 = '%s';" % tenantName
-    print(sql)
-    cursor.execute (sql)
-    try:
-        result = cursor.fetchone ()
-        print (result)
-
-        # 将查询结果返回前台页面
-        # return "您查询的租客是：<font color='red'> %s</font> \n 他的手机号号是：<font color='blue'> %s <blue>" %(result[1],result[2])
-        html_result ='''
-        <table align ="center" style="border-collapse:collapse;" border="1">
-            <tr>
-                 <th>租客姓名</td>
-                 <th>租客电话</td>
-            </tr>
-            
-            <tr>
-                 <td>%s</td>
-                 <td>%s</td>          
-            </tr>
-        
-        </table>''' % (result[1],result[2])
-
-        # return html_result
-        return  render_template('queryOne.html',tenantName=result[1],tenantPhone=result[2],roomNum=result[3],
-                                startDate =result[4],endDate=result[5])
-
-    except:
-        return render_template('queryOne.html')
 
 
 @app.route ('/getAll')
 def getAllTenant():
-    if cookie=="yes":
+    # if cookie=="yes":
         # pagesize =request.args.get('pagesize')
         # pagesize=int(pagesize)
         # pagenumber=request.args.get('pagenumber')
@@ -87,6 +49,8 @@ def getAllTenant():
         tenantPhone = "%" + tenantPhone +"%"
 
         tenantRoom = request.args.get ("Troom")
+        print(tenantName)
+        print(tenantPhone)
         tenantRoom = "%" + tenantRoom +"%"
 
         sql = "select * from tenant"
@@ -107,8 +71,81 @@ def getAllTenant():
             pass
 
         return render_template('queryAll.html',i=0,results = results,cookie=cookie)
-    else:
-        return redirect("/login")
+    # else:
+    #     return redirect("/login")
+
+@app.route("/apitest")
+def apitest():
+
+    return jsonify({'a':1,'b':2})
+
+@app.route("/apitest2")
+def apitest2():
+
+
+    return json.dumps([{'name':"狗伦",'age':8,'school':'中澳'},
+                       {'name': "蔡徐昆", 'age': 28, 'school': '野鸡学校'},
+                       {'name': "王大力", 'age': 18, 'school': '哈弗'},
+                       {'name': "沙老板", 'age': 8, 'school': '南京大学'},
+                       {'name': "钟无艳", 'age': 8, 'school': '北邮'},
+                       {'name': "吴法天", 'age': 8, 'school': '海洋大学'},
+                       {'name':"杨雅晴","age":10,"school":"中澳"}])
+
+
+@app.route("/testpage")
+def test():
+    return render_template("./dom_study/get_json.html")
+
+
+
+
+@app.route("/getTenants")
+def getTenants():
+
+    tenantName = request.args.get ("Tname")
+    if tenantName is None:
+        tenantName=""
+    tenantName = "%" + tenantName +"%"
+
+    tenantPhone = request.args.get ("Tphone")
+    if tenantPhone is None:
+        tenantPhone =""
+    tenantPhone = str(tenantPhone)
+    print(tenantPhone)
+    tenantPhone = "%" + tenantPhone +"%"
+
+
+    tenantRoom = request.args.get ("Troom")
+    if tenantRoom is None:
+        tenantRoom=""
+    print(tenantRoom)
+    tenantRoom = "%" + tenantRoom +"%"
+
+    sql = "select * from tenant"
+    # sql = "select * from tenant where 姓名 like '%s' and 手机 like '%s' and 房间号 like '%s' limit %s, %s;" % (tenantName,tenantPhone,
+    #                                                                                       tenantRoom,(pagenumber-1)*pagesize,pagesize)
+
+    sql = "select * from tenant where 姓名 like '%s' and 手机 like '%s' and 房间号 like '%s';" % (
+        tenantName, tenantPhone,
+        tenantRoom)
+    print (sql)
+    cursor.execute (sql)
+
+    try:
+        rv = cursor.fetchall ()
+        payload = []
+        content = {}
+        for result in rv:
+            content = {'name': result[1], 'tel': result[2], 'room': result[3],'startdate':result[4],'enddate':result[5]}
+            payload.append (content)
+            content = {}
+        # return jsonify (payload)
+        return jsonify(payload)
+
+    except:
+        pass
+
+
 
 @app.route('/addNew')
 def addNew():
@@ -136,9 +173,15 @@ def save():
     # conn.close()
 
     if addname!=None:
-        return  redirect("http://127.0.0.1:5000/getAll?Tname=&Tphone=&Troom=")
+        return  redirect("http://127.0.0.1:5000/")
     else:
         return "failure"
+
+@app.route("/queryAjax")
+def getAjax():
+    print(request.POST)
+    return render_template(request,"ajax_demo_02.html")
+
 
 
 

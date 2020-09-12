@@ -51,15 +51,11 @@
 </div>
 <h1 align="center">租客管理系统</h1>
 
-<form align='center' name="form" action="#" method="get">
-    租客姓名
-    <input type="text" name="Tname" id="tenantName"/>
-
-    电话
-    <input type="text" name="Tphone" id="Tphone">
-    房号
-    <input type="text" name="Troom" id="Troom">
-    <input type="button" value="查询" id="all" style="background: powderblue;outline:none;border:0">
+<form align='center' name="form" action="#" method="get" id="form1">
+    租客姓名  <input type="text" name="Tname" id="Tname"/>
+    电话  <input type="text" name="Tphone" id="Tphone">
+    房号  <input type="text" name="Troom" id="Troom">
+    <input type="button" value="查询" id="queryAll" style="background: powderblue;outline:none;border:0">
     <input type="button" value="新增" id="addnew"  style="background: powderblue;outline:none;border:0">
 
 
@@ -69,29 +65,115 @@
 
 
 {% block MainContainer %}
+    <div id="querytable">
 
+    <table id="table1" style="font-size:13px;border-collapse:collapse;" align ="cener"  border="1" width="80%"></table>
+
+    </div>
 {% endblock %}
 
-<script type="text/javascript">
-    var  check = document.getElementById('btn');
-    var Tname = document.getElementById('tenantName');
-    var allbtn = document.getElementById('all')
-    var Tphone = document.getElementById("Tphone");
-    var Troom = document.getElementById("Troom");
-    var addnew = document.getElementById("addnew")
+<script src="../static/jquery-3.4.1.js"></script>
 
 
-    allbtn.onclick = function () {
+<script>
+
+    window.onload = function() {//当文档加载完毕时执行本函数
+
+
+       var table1 =document.getElementById("table1")
+
+
+    queryAll.onclick=function () {
+        var Tname = document.getElementById('Tname');
+        var Tphone = document.getElementById("Tphone");
+        var Troom = document.getElementById("Troom");
+        var queryAll = document.getElementById('queryAll');
+        var addnew = document.getElementById("addnew")
+
+
+
+
         Tname = Tname.value;
+
         Tphone = Tphone.value;
+
         Troom = Troom.value;
-        document.form.action = "http://127.0.0.1:5000/getAll"
-        document.form.submit()
+
+        table1.innerHTML=""
+
+        $.ajax({
+             // （1）创建异步对象
+            url:"/getTenants",
+            data:{"Tname":Tname,"Tphone":Tphone,"Troom":Troom},
+            type:"get",
+            dataType:"json",
+            success: function(data) {
+
+
+                console.log(data);
+                console.log(data[1])
+                var th = "<tr>\n" +
+                    "             <th>姓名</th>\n" +
+                    "             <th>手机</th>\n" +
+                    "             <th>房间号</th>\n" +
+                    "             <th>承租日期</th>\n" +
+                    "             <th>到期日期</th>\n" +
+                    "        </tr>"
+
+                var trs =""
+                function addtds() {
+
+                    for(var i=0;i<data.length;i++) {
+                        if(i%2==0){
+                            var trl= '<tr bgcolor="#f0f8ff">'
+
+                        }
+                        else{
+                            var trl= '<tr bgcolor="#dbe4e6">'
+
+                        }
+
+
+                        var tr =trl+
+                                       "<td>"+data[i]['name'] +"</td>"+
+                                       "<td>"+data[i]['tel']  +"</td>"+
+                                       "<td>"+data[i]['room']+"</td>" +
+                                       "<td>"+data[i]['startdate']+"</td>"+
+                                       "<td>"+data[i]['enddate']+"</td>" +"</tr>"
+
+
+                        trs=trs+tr
+                    }
+                    return trs
+                }
+                trs=addtds();
+
+                table1.innerHTML=th+trs;
+
+
+            },
+
+        })
+
     }
 
-    addnew.onclick = function () {
-        self.location.href = "http://127.0.0.1:5000/addNew"
-    }
+
+
+
+
+
+
+
+
+
+
+    };
+
+
+
+        addnew.onclick = function () {
+            self.location.href = "http://127.0.0.1:5000/addNew"
+        }
 
 </script>
 
