@@ -69,7 +69,55 @@
 
 {% block MainContainer %}
 
+    <table style="font-size:13px;border-collapse:collapse;" align ="center"; border="1"; width="100%">
+
+        <tr>
+             <th>租客姓名</th>
+             <th>租客电话</th>
+             <th>房号</th>
+             <th>承租日期</th>
+             <th>到期日期</th>
+        </tr>
+
+
+        {% for result in results %}
+            {% if loop.index0%2==0 %}
+                <tr bgcolor="#f0f8ff">
+
+            {% else %}
+                <tr bgcolor="#b0e0e6">
+
+            {% endif %}
+
+             <td ><div>{{ result[1] }}</div></td>
+             <td ><div>{{ result[2] }}</div></td>
+             <td ><div>{{ result[3] }}</div></td>
+             <td ><div>{{ result[4] }}</div></td>
+             <td ><div>{{ result[5] }}</div></td>
+            </tr>
+
+
+
+        {% endfor %}
+
+
+
+    </table>
+
 {% endblock %}
+
+
+
+
+<div class="page">
+
+{#    <input type="text"  name="pagesize"  style="width:15px;height:10px">#}
+{#    <span style="font-size:14px">第几页</span>#}
+    <input type="text" name="pagenumber" style="width:15px;height:10px">
+    <span id="span_pre" style="font-size:14px">上一页</span>
+    <span id="span_nxt" style="font-size:14px">下一页</span>
+
+</div>
 
 
 
@@ -81,9 +129,6 @@
     var Troom = document.getElementById("Troom");
     var addnew = document.getElementById("addnew")
 
-
-
-
     allbtn.onclick = function () {
         Tname = Tname.value;
         Tphone = Tphone.value;
@@ -92,38 +137,11 @@
         document.form.submit()
     }
 
-    addnew.onclick = function () {
-        self.location.href = "http://127.0.0.1:5000/addNew"
-    }
+
+
+    var nxt = document.getElementById("span_nxt")
 
 </script>
-
-<div class="page">
-
-{#    <input type="text"  name="pagesize"  style="width:15px;height:10px">#}
-{#    <span style="font-size:14px">第几页</span>#}
-    <input type="text" name="pagenumber" value="1"  id='pagenum' style="width:15px;height:10px">
-    <span id="span_pre" style="font-size:14px">上一页</span>
-    <span id="span_nxt" style="font-size:14px">下一页</span>
-
-</div>
-
-
-    <script type="text/javascript">
-        pagenum=document.getElementById('pagenum');
-        var pagevalue=pagenum.value
-        {#alert(pagevalue)#}
-
-        var nxt = document.getElementById("span_nxt")
-        nxt.onclick= function () {
-             {#document.form.action = "http://127.0.0.1:5000/getAll/"+pagenum+1#}
-             {#document.form.submit();#}
-
-
-
-}
-    </script>
-
 
 </div>
 </body>

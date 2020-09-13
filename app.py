@@ -17,7 +17,7 @@ def home():
         if request.values.get("username")=="dydx" and request.values.get("password")=="123":
 
             cookie="yes"
-            return render_template('home.html',cookie=cookie)
+            return render_template('home_innerTable.html',cookie=cookie)
         else:
             return redirect("/login")
 
@@ -72,8 +72,9 @@ def getFirstTenant():
         return render_template('queryOne.html')
 
 
-@app.route ('/getAll')
-def getAllTenant():
+@app.route ('/getAll/<pagenum>')
+def getAllTenant(pagenum):
+    pagenum=int(pagenum)
     if cookie=="yes":
         # pagesize =request.args.get('pagesize')
         # pagesize=int(pagesize)
@@ -90,12 +91,12 @@ def getAllTenant():
         tenantRoom = "%" + tenantRoom +"%"
 
         sql = "select * from tenant"
-        #sql = "select * from tenant where 姓名 like '%s' and 手机 like '%s' and 房间号 like '%s' limit %s, %s;" % (tenantName,tenantPhone,
-        #                                                                                       tenantRoom,(pagenumber-1)*pagesize,pagesize)
+        sql = "select * from tenant where 姓名 like '%s' and 手机 like '%s' and 房间号 like '%s' limit %s, %s;" % (tenantName,tenantPhone,
+                                                                                              tenantRoom,(pagenum-1)*5,5)
 
-        sql = "select * from tenant where 姓名 like '%s' and 手机 like '%s' and 房间号 like '%s';" % (
-        tenantName, tenantPhone,
-        tenantRoom)
+        # sql = "select * from tenant where 姓名 like '%s' and 手机 like '%s' and 房间号 like '%s' limit 5;" % (
+        # tenantName, tenantPhone,
+        # tenantRoom)
         print (sql)
         cursor.execute (sql)
 
@@ -106,7 +107,7 @@ def getAllTenant():
         except:
             pass
 
-        return render_template('queryAll.html',i=0,results = results,cookie=cookie)
+        return render_template('queryAll.html',i=0,results = results,cookie=cookie,pagenum=pagenum+1)
     else:
         return redirect("/login")
 
@@ -143,4 +144,4 @@ def save():
 
 
 if __name__ == '__main__':
-    app.run (debug=True)
+    app.run(FLASK_DEBUG=1, debug=True)
