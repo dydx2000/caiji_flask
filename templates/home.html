@@ -8,31 +8,35 @@
         table {
             margin: auto
         }
+
         td {
 
-    text-align:center;
+            text-align: center;
 
         }
+
         .page {
-            margin:auto;
+            margin: auto;
             padding: 20px;
             width: 600px;
             float: right;
         }
-        .login{
-            color:red;
+
+        .login {
+            color: red;
             float: right;
 
 
         }
-        .logout{
-            color:blue;
+
+        .logout {
+            color: blue;
             float: right;
         }
 
-        #outer{
+        #outer {
             width: 1115px;
-            margin:auto;
+            margin: auto;
         }
 
     </style>
@@ -40,152 +44,143 @@
 </head>
 <body>
 <div id="outer">
-<div>
-    {% if cookie=="yes" %}
-        <div class="login">已登录</div>
+    <div>
+        {% if cookie=="yes" %}
+            <div class="login">已登录</div>
 
-    {% else %}
+        {% else %}
 
-        <div class="logout">请登录</div>
-    {% endif %}
-</div>
-<h1 align="center">租客管理系统</h1>
+            <div class="logout">请登录</div>
+        {% endif %}
+    </div>
+    <h1 align="center">租客管理系统</h1>
 
-<form align='center' name="form" action="#" method="get" id="form1">
-    租客姓名  <input type="text" name="Tname" id="Tname"/>
-    电话  <input type="text" name="Tphone" id="Tphone">
-    房号  <input type="text" name="Troom" id="Troom">
-    <input type="button" value="查询" id="queryAll" style="background: powderblue;outline:none;border:0">
-    <input type="button" value="新增" id="addnew"  style="background: powderblue;outline:none;border:0">
-
-
-</form>
-
-<br><br>
+    <form align='center' name="form" action="#" method="get" id="form1">
+        租客姓名 <input type="text" name="Tname" id="Tname"/>
+        电话 <input type="text" name="Tphone" id="Tphone">
+        房号 <input type="text" name="Troom" id="Troom">
+        <input type="button" value="查询" id="queryAll" style="background: powderblue;outline:none;border:0">
+        <input type="button" value="新增" id="addnew" style="background: powderblue;outline:none;border:0">
 
 
-{% block MainContainer %}
-    <div id="querytable">
+    </form>
 
-    <table id="table1" style="font-size:13px;border-collapse:collapse;" align ="cener"  border="1" width="80%"></table>
+    <br><br>
+
+
+    {% block MainContainer %}
+        <div id="querytable">
+
+            <table id="table1" style="font-size:13px;border-collapse:collapse;" align="cener" border="1"
+                   width="80%"></table>
+
+        </div>
+    {% endblock %}
+
+
+    <div class="page">
+        分页大小<input type="text" name="pagesize" style="width:15px"> 第几页 <input type="text" name="pagenumber"
+                                                                              style="width:15px">
 
     </div>
-{% endblock %}
 
+    {% block script %}
+
+    {% endblock %}
+
+</div>
+</body>
 <script src="../static/jquery-3.4.1.js"></script>
 
 
 <script>
 
-    window.onload = function() {//当文档加载完毕时执行本函数
+        window.onload = function () {//当文档加载完毕时执行本函数
+
+            var table1 = document.getElementById("table1")
+            //查询操作
+            queryAll.onclick=function queryALL() {
+                var Tname = document.getElementById('Tname');
+                var Tphone = document.getElementById("Tphone");
+                var Troom = document.getElementById("Troom");
+                var queryAll = document.getElementById('queryAll');
+                var addnew = document.getElementById("addnew")
+
+                //获取输入框文本
+                Tname = Tname.value;
+                Tphone = Tphone.value;
+                Troom = Troom.value;
+                table1.innerHTML = ""
+
+                $.ajax({
+                    // （1）创建异步对象
+                    url: "/getTenants",
+                    data: {"Tname": Tname, "Tphone": Tphone, "Troom": Troom},
+                    type: "get",
+                    dataType: "json",
+                    success: function (data) {
+                        console.log(data);
+                        console.log(data[1])
+                        //创建表头
+                        var th = "<tr>\n" +
+                            "             <th>姓名</th>\n" +
+                            "             <th>手机</th>\n" +
+                            "             <th>房间号</th>\n" +
+                            "             <th>承租日期</th>\n" +
+                            "             <th>到期日期</th>\n" +
+                            "        </tr>"
+
+                        var trs = ""
+
+                        //创建行
+                        function addtds() {
+
+                            for (var i = 0; i < data.length; i++) {
+                                if (i % 2 == 0) {
+                                    var trl = '<tr bgcolor="#f0f8ff">'
+
+                                } else {
+                                    var trl = '<tr bgcolor="#dbe4e6">'
+
+                                }
+
+                                var tr = trl +
+                                    "<td>" + data[i]['name'] + "</td>" +
+                                    "<td>" + data[i]['tel'] + "</td>" +
+                                    "<td>" + data[i]['room'] + "</td>" +
+                                    "<td>" + data[i]['startdate'] + "</td>" +
+                                    "<td>" + data[i]['enddate'] + "</td>" + "</tr>"
 
 
-       var table1 =document.getElementById("table1")
-
-
-    queryAll.onclick=function () {
-        var Tname = document.getElementById('Tname');
-        var Tphone = document.getElementById("Tphone");
-        var Troom = document.getElementById("Troom");
-        var queryAll = document.getElementById('queryAll');
-        var addnew = document.getElementById("addnew")
-
-
-
-
-        Tname = Tname.value;
-
-        Tphone = Tphone.value;
-
-        Troom = Troom.value;
-
-        table1.innerHTML=""
-
-        $.ajax({
-             // （1）创建异步对象
-            url:"/getTenants",
-            data:{"Tname":Tname,"Tphone":Tphone,"Troom":Troom},
-            type:"get",
-            dataType:"json",
-            success: function(data) {
-
-
-                console.log(data);
-                console.log(data[1])
-                var th = "<tr>\n" +
-                    "             <th>姓名</th>\n" +
-                    "             <th>手机</th>\n" +
-                    "             <th>房间号</th>\n" +
-                    "             <th>承租日期</th>\n" +
-                    "             <th>到期日期</th>\n" +
-                    "        </tr>"
-
-                var trs =""
-                function addtds() {
-
-                    for(var i=0;i<data.length;i++) {
-                        if(i%2==0){
-                            var trl= '<tr bgcolor="#f0f8ff">'
-
+                                trs = trs + tr
+                            }
+                            return trs
                         }
-                        else{
-                            var trl= '<tr bgcolor="#dbe4e6">'
 
-                        }
+                        trs = addtds();
 
+                        //把表头和和放进表格
+                        table1.innerHTML = th + trs;
 
-                        var tr =trl+
-                                       "<td>"+data[i]['name'] +"</td>"+
-                                       "<td>"+data[i]['tel']  +"</td>"+
-                                       "<td>"+data[i]['room']+"</td>" +
-                                       "<td>"+data[i]['startdate']+"</td>"+
-                                       "<td>"+data[i]['enddate']+"</td>" +"</tr>"
+                    },
 
+                })
 
-                        trs=trs+tr
-                    }
-                    return trs
-                }
-                trs=addtds();
-
-                table1.innerHTML=th+trs;
+            }
+            queryAll.onclick()
 
 
-            },
-
-        })
-
-    }
+        }
 
 
 
-
-
-
-
-
-
-
-
-    };
-
-
-
+        // 新增操作
         addnew.onclick = function () {
             self.location.href = "http://127.0.0.1:5000/addNew"
         }
 
+
 </script>
 
-<div class="page">
- 分页大小<input type="text"  name="pagesize"  style="width:15px">    第几页 <input type="text" name="pagenumber" style="width:15px">
 
-</div>
-
-{% block script %}
-
-{% endblock %}
-
-</div>
-</body>
 </html>

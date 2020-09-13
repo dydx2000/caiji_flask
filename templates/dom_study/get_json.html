@@ -29,7 +29,6 @@
             color:blue;
             float: right;
         }
-
         #outer{
             width: 1115px;
             margin:auto;
@@ -60,7 +59,7 @@
             dataType:"json",
             success: function(data) {
                 console.log(data);
-                alert(data)
+
             },
             error: function(XMLHttpRequest, textStatus, errorThrown) {
                 alert(XMLHttpRequest.status);
@@ -70,11 +69,8 @@
         })
         }
 
+    {#html 注释 #}
     test2.onclick=function () {
-
-
-
-
         $.ajax({
             url:"/apitest2",
             type:"get",
@@ -100,14 +96,10 @@
                 trs=addtds();
 
                 table1.innerHTML=th+trs;
-
             },
-
         })
     }
 
 </script>
-
-
 </body>
 </html>
