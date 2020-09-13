@@ -95,15 +95,14 @@
 
 <script>
 
-        window.onload = function () {//当文档加载完毕时执行本函数
-
-            var table1 = document.getElementById("table1")
+        var table1 = document.getElementById("table1")
             //查询操作
-            queryAll.onclick=function queryALL() {
+        var queryAll = document.getElementById('queryAll');
+        queryAll.onclick=function queryALL() {
                 var Tname = document.getElementById('Tname');
                 var Tphone = document.getElementById("Tphone");
                 var Troom = document.getElementById("Troom");
-                var queryAll = document.getElementById('queryAll');
+
                 var addnew = document.getElementById("addnew")
 
                 //获取输入框文本
@@ -167,17 +166,20 @@
                 })
 
             }
+
+        addnew.onclick = function () {
+            self.location.href = "http://127.0.0.1:5000/addNew"
+        }
+        window.onload = function () {//当文档加载完毕时执行本函数
+
+
             queryAll.onclick()
 
 
         }
 
-
-
         // 新增操作
-        addnew.onclick = function () {
-            self.location.href = "http://127.0.0.1:5000/addNew"
-        }
+
 
 
 </script>
