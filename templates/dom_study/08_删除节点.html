@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="box">
+    <span>01</span>
+    <span id='second'>02</span>
+    <span>03</span>
+
+</div>
+</body>
+<script>
+    box=document.getElementById("box")
+    second = document.getElementById('second')
+
+    var op = document.createElement('p')
+    op.innerHTML="新创建的P标签用来替换 second span"
+    box.replaceChild(op,second)
+
+
+</script>
+</html>

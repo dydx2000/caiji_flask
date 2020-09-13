@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div id="box">
+        <span id="old">原来的东西</span>
+
+    </div>
+
+</body>
+<script>
+    window.onload=function () {
+    var box = document.getElementById('box')
+
+    //创建新标签
+    var objp= document.createElement("p")
+    //创建文本节点
+    var objp_con =document.createTextNode("新创建的P标签中的内容")
+    //把文本节点放入标签
+    objp.appendChild(objp_con)
+
+    //添加到指定位置
+    var old =document.getElementById("old")
+    box.insertBefore(objp,old)
+
+    var oDiv = document.createElement("div")
+    // 设置id 和 class
+    oDiv.id='container'
+    oDiv.className="slide"
+
+    //设置 样式
+    oDiv.style.height='400px'
+    oDiv.style.width='300px'
+    oDiv.style.border="ipx solid red"
+
+    oDiv.innerHTML="创建的div"
+
+    box.appendChild(oDiv)
+
+
+
+
+}
+
+</script>
+</html>

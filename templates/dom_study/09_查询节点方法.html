@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div>哥哥</div><div id="box">
+        <ul id="list">
+            <li>第一个li</li>
+            <li>第二个li</li>
+            <li>第三个li</li>
+        </ul>
+        <p>普通文本</p>
+    </div>
+    <div>弟弟</div>
+</body>
+<script>
+    var box=document.getElementById('box')
+
+    console.log(box.firstChild)
+    console.log(box.previousSibling)
+    console.log(box.nextSibling)
+    console.log(box.children)
+</script>
+</html>
