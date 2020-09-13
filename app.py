@@ -118,6 +118,7 @@ def getTenants():
     # 执行查询
     sql = "select * from tenant where 姓名 like '%s' and 手机 like '%s' and 房间号 like '%s';" % (
         tenantName, tenantPhone, tenantRoom)
+    print(sql)
     cursor.execute (sql)
 
     try:
@@ -125,6 +126,7 @@ def getTenants():
         payload = []
         content = {}
         for result in rv:
+            print(result)
 
             startdate = datetime.datetime.strftime(result[4],"%Y-%m-%d")
             enddate = datetime.datetime.strftime (result[5], "%Y-%m-%d")

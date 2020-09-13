@@ -96,7 +96,8 @@
 <script>
 
         var table1 = document.getElementById("table1")
-            //查询操作
+
+        //查询操作
         var queryAll = document.getElementById('queryAll');
         queryAll.onclick=function queryALL() {
                 var Tname = document.getElementById('Tname');
@@ -121,7 +122,7 @@
                         console.log(data);
                         console.log(data[1])
                         //创建表头
-                        var th = "<tr>\n" +
+                        var th = "<tr bgcolor='#dbe4e6'>\n" +
                             "             <th>姓名</th>\n" +
                             "             <th>手机</th>\n" +
                             "             <th>房间号</th>\n" +
