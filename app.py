@@ -28,45 +28,7 @@ def login():
         return redirect("http://127.0.0.1:5000/")
     else:
         return render_template('login.html')
-'''
-@app.route ('/getAll')  # 弃用，返回的是查询结果，未做json处理
-def getAllTenant():
-    # if cookie=="yes":
-        # pagesize =request.args.get('pagesize')
-        # pagesize=int(pagesize)
-        # pagenumber=request.args.get('pagenumber')
-        # pagenumber=int(pagenumber)
-        tenantName = request.args.get ("Tname")
-        print(tenantName)
-        tenantName = "%" + tenantName +"%"
 
-        tenantPhone = request.args.get ("Tphone")
-        tenantPhone = "%" + tenantPhone +"%"
-
-        tenantRoom = request.args.get ("Troom")
-        print(tenantName)
-        print(tenantPhone)
-        tenantRoom = "%" + tenantRoom +"%"
-
-        sql = "select * from tenant"
-        #sql = "select * from tenant where 姓名 like '%s' and 手机 like '%s' and 房间号 like '%s' limit %s, %s;" % (tenantName,tenantPhone,
-        #                                                                                       tenantRoom,(pagenumber-1)*pagesize,pagesize)
-
-        sql = "select * from tenant where 姓名 like '%s' and 手机 like '%s' and 房间号 like '%s';" % (
-        tenantName, tenantPhone,
-        tenantRoom)
-        print (sql)
-        cursor.execute (sql)
-
-        try:
-            results = cursor.fetchall ()
-            print (results)
-
-        except:
-            pass
-
-        return render_template('queryAll.html',i=0,results = results,cookie=cookie)
-'''
 
 @app.route("/apitest")  # 测试学习用
 def apitest():
@@ -143,7 +105,7 @@ def getTenants():
 @app.route('/addNew')    # 添加记录
 def addNew():
     if cookie == "yes":
-        return render_template('addNew.html',cookie=cookie)
+        return render_template('add.html', cookie=cookie)
     else:
         return redirect("/login")
 

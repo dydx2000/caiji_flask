@@ -2,82 +2,67 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-
-        {% block title %}
-
-
-        {% endblock %}
-
+    <title>租客管理系统</title>
 
     <style>
         table {
             margin: auto
         }
+
         td {
 
-    text-align:center;
+            text-align: center;
 
+        }
+
+        .page {
+            margin: auto;
+            padding: 20px;
+            width: 600px;
+            float: right;
+        }
+
+        .login {
+            color: red;
+            float: right;
+
+
+        }
+
+        .logout {
+            color: blue;
+            float: right;
+        }
+
+        #outer {
+            width: 1115px;
+            margin: auto;
         }
 
     </style>
 
 </head>
-<body>
 
 
-{% block H1 %}
-
-{% endblock  %}
-
-{% block form %}
-
-<form align='center' name="form" action="http://127.0.0.1:5000/getfirst" method="get">
-    租客姓名
-    <input type="text" name="Tname" id="tenantName"/>
-    {#        <input type="button" value="查询" id="btn" />#}
-    电话
-    <input type="text" name="Tphone" id="Tphone">
-    房号
-    <input type="text" name="Troom" id="Troom">
-    <input type="button" value="查询" id="all">
-    <input type="button" value="新增" id="addnew">
-
-</form>
+{% block title %}
+    <title></title>
 
 {% endblock %}
 
-<br><br>
+{% block H1 %}
+<h1 align="center">租客管理系统</h1>
+
+
+{% endblock %}
 
 
 {% block MainContainer %}
 
+
+
 {% endblock %}
 
-<script type="text/javascript">
-    {#var  check = document.getElementById('btn');#}
-    var Tname = document.getElementById('tenantName');
-    var allbtn = document.getElementById('all')
-    var Tphone = document.getElementById("Tphone");
-    var Troom = document.getElementById("Troom");
-    var addnew = document.getElementById("addnew")
 
-
-    allbtn.onclick = function () {
-        Tname = Tname.value;
-        Tphone = Tphone.value;
-        Troom = Troom.value;
-        document.form.action = "http://127.0.0.1:5000/getAll"
-        document.form.submit()
-    }
-
-    addnew.onclick = function () {
-        self.location.href = "http://127.0.0.1:5000/addNew"
-    }
-
-</script>
-
-{% block script %}
+{% block form %}
 
 {% endblock %}
-</body>
-</html>
