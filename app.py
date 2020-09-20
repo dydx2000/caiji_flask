@@ -77,9 +77,15 @@ def getTenants():
         tenantRoom=""
     tenantRoom = "%" + tenantRoom +"%"
 
+    # 从前台获取页码
+    pageNumber = request.args.get("Tpage")
+    pageNumber = int(pageNumber)
+
+    pageSize =5
+
     # 执行查询
-    sql = "select * from tenant where 姓名 like '%s' and 手机 like '%s' and 房间号 like '%s';" % (
-        tenantName, tenantPhone, tenantRoom)
+    sql = "select * from tenant where 姓名 like '%s' and 手机 like '%s' and 房间号 like '%s' limit %s,%s;" % (
+        tenantName, tenantPhone, tenantRoom,(pageNumber-1) * pageSize,pageSize)
     print(sql)
     cursor.execute (sql)
 
