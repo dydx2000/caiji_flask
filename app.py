@@ -3,6 +3,7 @@ import datetime
 import pymysql
 app = Flask (__name__)
 
+conn = pymysql.connect("127.0.0.1",'root','123456','renthouse',charset='utf8',port=3306)
 conn = pymysql.connect("dingo1981.xyz",'root','0329','renthouse',charset='utf8',port=8306)
 cursor = conn.cursor()
 
@@ -79,6 +80,7 @@ def getTenants():
 
     # 从前台获取页码
     pageNumber = request.args.get("Tpage")
+    print(pageNumber)
     pageNumber = int(pageNumber)
 
     pageSize =5

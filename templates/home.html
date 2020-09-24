@@ -80,8 +80,8 @@
 
     <div class="page">
 {#        分页大小<input type="text" name="pagesize" style="width:15px">#}
-        <input type="button" name="prePage" value="上一页" id="prePage">
-        第 <input type="text" name="pagenumber" value="1" id="pagenumber" style="width:15px">页
+        <input type="button" name="prePage" value="上一页" id="prePage" disabled="">
+        第 <input type="text" name="pageNumber" value="1"  id="pageNumber" style="width:15px">页
         <input type="button" name="nextPage" value="下一页" id="nextPage">
 
     </div>
@@ -98,277 +98,135 @@
 <script>
 
         var table1 = document.getElementById("table1")
-        var Tpage = document.getElementById("pagenumber") //当前页码
+        var Tpage = document.getElementById("pageNumber")  //当前页码
+        var Tname = document.getElementById('Tname');
+        var Tphone = document.getElementById("Tphone");
+        var Troom = document.getElementById("Troom");
+        var prePage = document.getElementById("prePage");
 
-
-        //查询操作
-        var queryAll = document.getElementById('queryAll');
-
-        queryAll.onclick=function queryALL() {
-                var Tname = document.getElementById('Tname');
-                var Tphone = document.getElementById("Tphone");
-                var Troom = document.getElementById("Troom");
-                //var Tpage = document.getElementById("pagenumber")
-                //console.log(Tpage)
-
-                var addnew = document.getElementById("addnew")
-
-
-                //获取输入框文本
-                Tname = Tname.value;
-                Tphone = Tphone.value;
-                Troom = Troom.value;
-                TpageValue = Tpage.value;
-                //console.log(typeof Tpage);
-                table1.innerHTML = "";
-
-                $.ajax({
-                    // （1）创建异步对象
-                    url: "/getTenants",
-                    data: {"Tname": Tname, "Tphone": Tphone, "Troom": Troom,"Tpage":TpageValue},
-                    type: "get",
-                    dataType: "json",
-                    success: function (data) {
-                        console.log(data);
-                        console.log(data[1])
-                        //创建表头
-                        var th = "<tr bgcolor='#dbe4e6'>\n" +
-                            "             <th>姓名</th>\n" +
-                            "             <th>手机</th>\n" +
-                            "             <th>房间号</th>\n" +
-                            "             <th>承租日期</th>\n" +
-                            "             <th>到期日期</th>\n" +
-                            "        </tr>"
-
-                        var trs = ""
-
-                        //创建行
-                        function addtds() {
-
-                            for (var i = 0; i < data.length; i++) {
-                                if (i % 2 == 0) {
-                                    var trl = '<tr bgcolor="#f0f8ff">'
-
-                                } else {
-                                    var trl = '<tr bgcolor="#dbe4e6">'
-
-                                }
-
-                                var tr = trl +
-                                    "<td>" + data[i]['name'] + "</td>" +
-                                    "<td>" + data[i]['tel'] + "</td>" +
-                                    "<td>" + data[i]['room'] + "</td>" +
-                                    "<td>" + data[i]['startdate'] + "</td>" +
-                                    "<td>" + data[i]['enddate'] + "</td>" + "</tr>"
-
-
-                                trs = trs + tr
-                            }
-                            return trs
-                        }
-
-                        trs = addtds();
-
-                        //把表头和和放进表格
-                        table1.innerHTML = th + trs;
-
-                    },
-
-                })
-
-            };
-
-
-        // 下一页
         var nextPage = document.getElementById('nextPage');
 
+
+
+        //查询操作按钮对象
+        var queryAll = document.getElementById('queryAll');
+
+        // 查询主方法
+        function queryBase(TnameValue,TphoneValue,TroomValue,TpageValue){
+            //table1.innerHTML = "";
+
+            $.ajax({
+                // （1）创建异步对象
+                url: "/getTenants",
+                data: {"Tname": TnameValue, "Tphone": TphoneValue, "Troom": TroomValue,"Tpage":TpageValue},
+                type: "get",
+                dataType: "json",
+                success: function (data) {
+                    console.log(data);
+                    console.log(data[1])
+                    //创建表头
+                    var th = "<tr bgcolor='#dbe4e6'>\n" +
+                        "             <th>姓名</th>\n" +
+                        "             <th>手机</th>\n" +
+                        "             <th>房间号</th>\n" +
+                        "             <th>承租日期</th>\n" +
+                        "             <th>到期日期</th>\n" +
+                        "        </tr>"
+
+                    var trs = ""
+
+                    //创建行
+                    function addtds() {
+                        table1.innerHTML = "";
+
+                        for (var i = 0; i < data.length; i++) {
+                            if (i % 2 == 0) {
+                                var trl = '<tr bgcolor="#f0f8ff">'
+
+                            } else {
+                                var trl = '<tr bgcolor="#dbe4e6">'
+
+                            }
+
+                            var tr = trl +
+                                "<td>" + data[i]['name'] + "</td>" +
+                                "<td>" + data[i]['tel'] + "</td>" +
+                                "<td>" + data[i]['room'] + "</td>" +
+                                "<td>" + data[i]['startdate'] + "</td>" +
+                                "<td>" + data[i]['enddate'] + "</td>" + "</tr>"
+
+
+                            trs = trs + tr
+                        }
+                        return trs
+                    }
+
+                    trs = addtds();
+
+                    //把表头和和放进表格
+                    table1.innerHTML = th + trs;
+
+                },
+            })
+            Tpage.value =TpageValue; //把当前面的值更新
+            if (TpageValue == 1){
+                prePage.disabled=true;
+
+            }else{
+                prePage.disabled=false;
+            }
+        }
+
+        queryAll.onclick=function queryAll() {
+                //获取输入框文本
+                TnameValue = Tname.value;
+                TphoneValue = Tphone.value;
+                TroomValue = Troom.value;
+                TpageValue = 1;
+                queryBase(TnameValue,TphoneValue,TroomValue,TpageValue)
+            };
+
+        // 下一页
         nextPage.onclick= function nextPage(){
-            var Tname = document.getElementById('Tname');
-            var Tphone = document.getElementById("Tphone");
-            var Troom = document.getElementById("Troom");
-            //var Tpage = document.getElementById("pagenumber")
-
-
-            var addnew = document.getElementById("addnew")
-
-
             //获取输入框文本
-            Tname = Tname.value;
-            Tphone = Tphone.value;
-            Troom = Troom.value;
+            TnameValue = Tname.value;
+            TphoneValue = Tphone.value;
+            TroomValue = Troom.value;
             TpageValue = Tpage.value;
             TpageValue = Number(TpageValue)  //转换为数字
             TpageValue +=1;
-
-
-
-            {#console.log(Tpage)#}
-            table1.innerHTML = ""
-
-            $.ajax({
-                // （1）创建异步对象
-                url: "/getTenants",
-                data: {"Tname": Tname, "Tphone": Tphone, "Troom": Troom,"Tpage":TpageValue},
-                type: "get",
-                dataType: "json",
-                success: function (data) {
-                    console.log(data);
-                    console.log(data[1])
-                    //创建表头
-                    var th = "<tr bgcolor='#dbe4e6'>\n" +
-                        "             <th>姓名</th>\n" +
-                        "             <th>手机</th>\n" +
-                        "             <th>房间号</th>\n" +
-                        "             <th>承租日期</th>\n" +
-                        "             <th>到期日期</th>\n" +
-                        "        </tr>"
-
-                    var trs = ""
-
-                    //创建行
-                    function addtds() {
-
-                        for (var i = 0; i < data.length; i++) {
-                            if (i % 2 == 0) {
-                                var trl = '<tr bgcolor="#f0f8ff">'
-
-                            } else {
-                                var trl = '<tr bgcolor="#dbe4e6">'
-
-                            }
-
-                            var tr = trl +
-                                "<td>" + data[i]['name'] + "</td>" +
-                                "<td>" + data[i]['tel'] + "</td>" +
-                                "<td>" + data[i]['room'] + "</td>" +
-                                "<td>" + data[i]['startdate'] + "</td>" +
-                                "<td>" + data[i]['enddate'] + "</td>" + "</tr>"
-
-
-                            trs = trs + tr
-                        }
-                        return trs
-                    }
-
-                    trs = addtds();
-
-                    //把表头和和放进表格
-                    table1.innerHTML = th + trs;
-
-                },
-            })
-
-
-            Tpage.value =TpageValue;
-
+            //查询
+            queryBase(TnameValue,TphoneValue,TroomValue,TpageValue);
         }
 
         // 上一页
-        var prePage = document.getElementById('prePage');
-
         prePage.onclick= function prePage(){
-            var Tname = document.getElementById('Tname');
-            var Tphone = document.getElementById("Tphone");
-            var Troom = document.getElementById("Troom");
-            //var Tpage = document.getElementById("pagenumber")
-
-
-            var addnew = document.getElementById("addnew")
-
-
             //获取输入框文本
-            Tname = Tname.value;
-            Tphone = Tphone.value;
-            Troom = Troom.value;
+            TnameValue = Tname.value;
+            TphoneValue = Tphone.value;
+            TroomValue = Troom.value;
             TpageValue = Tpage.value;
             TpageValue = Number(TpageValue)  //转换为数字
             if (TpageValue >1){
-
                 TpageValue -=1;
-            }else{
-                alert("已经在第一页！")
+                //table1.innerHTML = ""; //把现在有表格清空
+                //查询
+                queryBase(TnameValue,TphoneValue,TroomValue,TpageValue);
             }
-
-
-
-            {#console.log(Tpage)#}
-            table1.innerHTML = ""
-
-            $.ajax({
-                // （1）创建异步对象
-                url: "/getTenants",
-                data: {"Tname": Tname, "Tphone": Tphone, "Troom": Troom,"Tpage":TpageValue},
-                type: "get",
-                dataType: "json",
-                success: function (data) {
-                    console.log(data);
-                    console.log(data[1])
-                    //创建表头
-                    var th = "<tr bgcolor='#dbe4e6'>\n" +
-                        "             <th>姓名</th>\n" +
-                        "             <th>手机</th>\n" +
-                        "             <th>房间号</th>\n" +
-                        "             <th>承租日期</th>\n" +
-                        "             <th>到期日期</th>\n" +
-                        "        </tr>"
-
-                    var trs = ""
-
-                    //创建行
-                    function addtds() {
-
-                        for (var i = 0; i < data.length; i++) {
-                            if (i % 2 == 0) {
-                                var trl = '<tr bgcolor="#f0f8ff">'
-
-                            } else {
-                                var trl = '<tr bgcolor="#dbe4e6">'
-
-                            }
-
-                            var tr = trl +
-                                "<td>" + data[i]['name'] + "</td>" +
-                                "<td>" + data[i]['tel'] + "</td>" +
-                                "<td>" + data[i]['room'] + "</td>" +
-                                "<td>" + data[i]['startdate'] + "</td>" +
-                                "<td>" + data[i]['enddate'] + "</td>" + "</tr>"
-
-
-                            trs = trs + tr
-                        }
-                        return trs
-                    }
-
-                    trs = addtds();
-
-                    //把表头和和放进表格
-                    table1.innerHTML = th + trs;
-
-                },
-            })
-
-
-            Tpage.value =TpageValue;
-
         }
 
         // 添加租户
         addnew.onclick = function () {
             self.location.href = "http://127.0.0.1:5000/addNew"
         }
+
         window.onload = function () {//当文档加载完毕时执行本函数
 
 
             queryAll.onclick()
-
-
         }
-
-        // 新增操作
-
-
 
 </script>
 
-
+   
 </html>
