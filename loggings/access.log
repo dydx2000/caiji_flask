@@ -1,0 +1,228 @@
+2021-02-28 10:55:52,725 -INFO -I am info 
+2021-02-28 10:55:52,725 -WARNING -I am warning 
+2021-02-28 10:55:52,725 -ERROR -I am error 
+2021-02-28 10:55:52,725 -CRITICAL -I am critical
+
+
+2021-02-28 10:57:16,583 -WARNING -I am warning 
+2021-02-28 10:57:16,583 -ERROR -I am error 
+2021-02-28 10:57:16,583 -CRITICAL -I am critical 
+
+2021-02-28 10:59:07,887 -WARNING -I am warning 
+2021-02-28 10:59:07,887 -ERROR -I am error 
+2021-02-28 10:59:07,888 -CRITICAL -I am critical 
+2021-02-28 11:05:59,295 -INFO -I am info 
+2021-02-28 11:05:59,297 -DEBUG -I am debug 
+2021-02-28 11:05:59,298 -WARNING -I am warning 
+2021-02-28 11:05:59,298 -ERROR -I am error 
+2021-02-28 11:05:59,298 -CRITICAL -I am critical
+
+
+2021-02-28 11:06:09,116 -INFO -I am info 
+2021-02-28 11:06:09,117 -DEBUG -I am debug 
+2021-02-28 11:06:09,117 -WARNING -I am warning 
+2021-02-28 11:06:09,117 -ERROR -I am error 
+2021-02-28 11:06:09,117 -CRITICAL -I am critical 
+2021-02-28 11:10:02,112 -INFO -I am info 
+2021-02-28 11:10:02,113 -DEBUG -I am debug 
+2021-02-28 11:10:02,113 -WARNING -I am warning 
+2021-02-28 11:10:02,113 -ERROR -I am error 
+2021-02-28 11:10:02,113 -CRITICAL -I am critical 
+2021-02-28 11:10:02,113 -ERROR -另外的文件调用logger输出错误信息. 
+2021-02-28 11:10:55,450 -INFO -I am info 
+2021-02-28 11:10:55,450 -DEBUG -I am debug 
+2021-02-28 11:10:55,451 -WARNING -I am warning 
+2021-02-28 11:10:55,451 -ERROR -I am error 
+2021-02-28 11:10:55,451 -CRITICAL -I am critical 
+2021-02-28 11:10:55,451 -ERROR -另外的文件调用logger输出错误信息. 
+2021-02-28 11:11:00,535 -INFO -I am info 
+2021-02-28 11:11:00,535 -DEBUG -I am debug 
+2021-02-28 11:11:00,536 -WARNING -I am warning 
+2021-02-28 11:11:00,536 -ERROR -I am error 
+2021-02-28 11:11:00,536 -CRITICAL -I am critical 
+2021-02-28 11:11:00,536 -ERROR -另外的文件调用logger输出错误信息. 
+2021-02-28 11:34:13,560 -INFO -I am info 
+2021-02-28 11:34:13,561 -DEBUG -I am debug 
+2021-02-28 11:34:13,561 -WARNING -I am warning 
+2021-02-28 11:34:13,561 -ERROR -I am error 
+2021-02-28 11:34:13,561 -CRITICAL -I am critical 
+2021-02-28 11:34:13,561 -ERROR -另外的文件调用logger输出错误信息. 
+2021-02-28 11:34:16,631 -INFO -I am info 
+2021-02-28 11:34:16,631 -DEBUG -I am debug 
+2021-02-28 11:34:16,631 -WARNING -I am warning 
+2021-02-28 11:34:16,631 -ERROR -I am error 
+2021-02-28 11:34:16,631 -CRITICAL -I am critical 
+2021-02-28 11:36:17,483 -INFO -I am info 
+2021-02-28 11:36:17,483 -DEBUG -I am debug 
+2021-02-28 11:36:17,483 -WARNING -I am warning 
+2021-02-28 11:36:17,483 -ERROR -I am error 
+2021-02-28 11:36:17,484 -CRITICAL -I am critical 
+2021-02-28 12:35:00,384 -INFO -I am info 
+2021-02-28 12:35:00,385 -DEBUG -I am debug 
+2021-02-28 12:35:00,385 -WARNING -I am warning 
+2021-02-28 12:35:00,385 -ERROR -I am error 
+2021-02-28 12:35:00,385 -CRITICAL -I am critical 
+2021-02-28 12:35:26,882 -INFO -I am info 
+2021-02-28 12:35:26,882 -DEBUG -I am debug 
+2021-02-28 12:35:26,883 -WARNING -I am warning 
+2021-02-28 12:35:26,883 -ERROR -I am error 
+2021-02-28 12:35:26,883 -CRITICAL -I am critical 
+2021-02-28 12:36:03,303 __main__ -INFO -I am info 
+2021-02-28 12:36:03,303 __main__ -DEBUG -I am debug 
+2021-02-28 12:36:03,303 __main__ -WARNING -I am warning 
+2021-02-28 12:36:03,303 __main__ -ERROR -I am error 
+2021-02-28 12:36:03,303 __main__ -CRITICAL -I am critical 
+2021-02-28 12:36:14,441 __name__ -INFO -I am info 
+2021-02-28 12:36:14,441 __name__ -DEBUG -I am debug 
+2021-02-28 12:36:14,441 __name__ -WARNING -I am warning 
+2021-02-28 12:36:14,441 __name__ -ERROR -I am error 
+2021-02-28 12:36:14,441 __name__ -CRITICAL -I am critical 
+2021-02-28 13:02:02,914 __main__ -INFO -I am info 
+2021-02-28 13:02:02,915 __main__ -DEBUG -I am debug 
+2021-02-28 13:02:02,915 __main__ -WARNING -I am warning 
+2021-02-28 13:02:02,915 __main__ -ERROR -I am error 
+2021-02-28 13:02:02,915 __main__ -CRITICAL -I am critical 
+2021-02-28 14:14:54,158 __main__ -INFO -I am info 
+2021-02-28 14:14:54,158 __main__ -DEBUG -I am debug 
+2021-02-28 14:14:54,158 __main__ -WARNING -I am warning 
+2021-02-28 14:14:54,159 __main__ -ERROR -I am error 
+2021-02-28 14:14:54,159 __main__ -CRITICAL -I am critical 
+2021-02-28 14:15:08,184 __main__ -    INFO -I am info 
+2021-02-28 14:15:08,184 __main__ -   DEBUG -I am debug 
+2021-02-28 14:15:08,184 __main__ - WARNING -I am warning 
+2021-02-28 14:15:08,184 __main__ -   ERROR -I am error 
+2021-02-28 14:15:08,184 __main__ -CRITICAL -I am critical 
+2021-02-28 14:15:24,810 __main__ -     INFO -I am info 
+2021-02-28 14:15:24,810 __main__ -    DEBUG -I am debug 
+2021-02-28 14:15:24,810 __main__ -  WARNING -I am warning 
+2021-02-28 14:15:24,810 __main__ -    ERROR -I am error 
+2021-02-28 14:15:24,810 __main__ - CRITICAL -I am critical 
+2021-02-28 14:16:11,971 __main__ -INFO      -I am info 
+2021-02-28 14:16:11,971 __main__ -DEBUG     -I am debug 
+2021-02-28 14:16:11,971 __main__ -WARNING   -I am warning 
+2021-02-28 14:16:11,971 __main__ -ERROR     -I am error 
+2021-02-28 14:16:11,971 __main__ -CRITICAL  -I am critical 
+2021-02-28 14:16:35,291 __main__ | INFO      |I am info 
+2021-02-28 14:16:35,291 __main__ | DEBUG     |I am debug 
+2021-02-28 14:16:35,291 __main__ | WARNING   |I am warning 
+2021-02-28 14:16:35,291 __main__ | ERROR     |I am error 
+2021-02-28 14:16:35,292 __main__ | CRITICAL  |I am critical 
+2021-02-28 14:16:43,639 __main__ | INFO      |: I am info 
+2021-02-28 14:16:43,639 __main__ | DEBUG     |: I am debug 
+2021-02-28 14:16:43,639 __main__ | WARNING   |: I am warning 
+2021-02-28 14:16:43,639 __main__ | ERROR     |: I am error 
+2021-02-28 14:16:43,639 __main__ | CRITICAL  |: I am critical 
+2021-03-05 23:08:28,489 loggings.sample_01 | INFO      |: I am info 
+2021-03-05 23:08:28,489 loggings.sample_01 | DEBUG     |: I am debug 
+2021-03-05 23:08:28,489 loggings.sample_01 | WARNING   |: I am warning 
+2021-03-05 23:08:28,489 loggings.sample_01 | ERROR     |: I am error 
+2021-03-05 23:08:28,490 loggings.sample_01 | CRITICAL  |: I am critical 
+2021-03-05 23:08:28,490 loggings.sample_01 | ERROR     |: 另外的文件调用logger输出错误信息. 
+2021-03-05 23:08:47,037 loggings.sample_01 | INFO      |: I am info 
+2021-03-05 23:08:47,038 loggings.sample_01 | DEBUG     |: I am debug 
+2021-03-05 23:08:47,038 loggings.sample_01 | WARNING   |: I am warning 
+2021-03-05 23:08:47,038 loggings.sample_01 | ERROR     |: I am error 
+2021-03-05 23:08:47,038 loggings.sample_01 | CRITICAL  |: I am critical 
+2021-03-05 23:08:47,038 loggings.sample_01 | ERROR     |: 另外的文件调用logger输出错误信息. 
+2021-03-05 23:48:03,334 loggings.sample_01 | INFO      |: I am info 
+2021-03-05 23:48:03,334 loggings.sample_01 | DEBUG     |: I am debug 
+2021-03-05 23:48:03,334 loggings.sample_01 | WARNING   |: I am warning 
+2021-03-05 23:48:03,334 loggings.sample_01 | ERROR     |: I am error 
+2021-03-05 23:48:03,335 loggings.sample_01 | CRITICAL  |: I am critical 
+2021-03-05 23:48:03,335 loggings.sample_01 | ERROR     |: 另外的文件调用logger输出错误信息. 
+2021-03-05 23:48:11,982 loggings.sample_01 | INFO      |: I am info 
+2021-03-05 23:48:11,982 loggings.sample_01 | DEBUG     |: I am debug 
+2021-03-05 23:48:11,982 loggings.sample_01 | WARNING   |: I am warning 
+2021-03-05 23:48:11,982 loggings.sample_01 | ERROR     |: I am error 
+2021-03-05 23:48:11,982 loggings.sample_01 | CRITICAL  |: I am critical 
+2021-03-05 23:48:11,982 loggings.sample_01 | ERROR     |: 另外的文件调用logger输出错误信息. 
+2021-03-05 23:48:24,359 loggings.sample_01 | INFO      |: I am info 
+2021-03-05 23:48:24,359 loggings.sample_01 | DEBUG     |: I am debug 
+2021-03-05 23:48:24,359 loggings.sample_01 | WARNING   |: I am warning 
+2021-03-05 23:48:24,359 loggings.sample_01 | ERROR     |: I am error 
+2021-03-05 23:48:24,359 loggings.sample_01 | CRITICAL  |: I am critical 
+2021-03-05 23:48:24,360 loggings.sample_01 | ERROR     |: 另外的文件调用logger输出错误信息. 
+2021-03-06 11:09:24,459 loggings.sample_01 | INFO      |: I am info 
+2021-03-06 11:09:24,459 loggings.sample_01 | DEBUG     |: I am debug 
+2021-03-06 11:09:24,459 loggings.sample_01 | WARNING   |: I am warning 
+2021-03-06 11:09:24,459 loggings.sample_01 | ERROR     |: I am error 
+2021-03-06 11:09:24,460 loggings.sample_01 | CRITICAL  |: I am critical 
+2021-03-06 11:09:24,460 loggings.sample_01 | ERROR     |: 另外的文件调用logger输出错误信息. 
+2021-03-06 11:09:34,442 loggings.sample_01 | INFO      |: I am info 
+2021-03-06 11:09:34,443 loggings.sample_01 | DEBUG     |: I am debug 
+2021-03-06 11:09:34,443 loggings.sample_01 | WARNING   |: I am warning 
+2021-03-06 11:09:34,443 loggings.sample_01 | ERROR     |: I am error 
+2021-03-06 11:09:34,443 loggings.sample_01 | CRITICAL  |: I am critical 
+2021-03-06 11:09:34,443 loggings.sample_01 | ERROR     |: 另外的文件调用logger输出错误信息. 
+2021-03-06 11:09:41,871 loggings.sample_01 | INFO      |: I am info 
+2021-03-06 11:09:41,871 loggings.sample_01 | DEBUG     |: I am debug 
+2021-03-06 11:09:41,871 loggings.sample_01 | WARNING   |: I am warning 
+2021-03-06 11:09:41,872 loggings.sample_01 | ERROR     |: I am error 
+2021-03-06 11:09:41,872 loggings.sample_01 | CRITICAL  |: I am critical 
+2021-03-06 11:09:41,872 loggings.sample_01 | ERROR     |: 另外的文件调用logger输出错误信息. 
+2021-03-06 11:09:52,091 loggings.sample_01 | INFO      |: I am info 
+2021-03-06 11:09:52,091 loggings.sample_01 | DEBUG     |: I am debug 
+2021-03-06 11:09:52,091 loggings.sample_01 | WARNING   |: I am warning 
+2021-03-06 11:09:52,091 loggings.sample_01 | ERROR     |: I am error 
+2021-03-06 11:09:52,091 loggings.sample_01 | CRITICAL  |: I am critical 
+2021-03-06 11:09:52,091 loggings.sample_01 | ERROR     |: 另外的文件调用logger输出错误信息. 
+2021-03-06 11:10:03,503 loggings.sample_01 | INFO      |: I am info 
+2021-03-06 11:10:03,503 loggings.sample_01 | DEBUG     |: I am debug 
+2021-03-06 11:10:03,503 loggings.sample_01 | WARNING   |: I am warning 
+2021-03-06 11:10:03,503 loggings.sample_01 | ERROR     |: I am error 
+2021-03-06 11:10:03,503 loggings.sample_01 | CRITICAL  |: I am critical 
+2021-03-06 11:10:03,504 loggings.sample_01 | ERROR     |: 另外的文件调用logger输出错误信息. 
+2021-03-06 11:10:12,533 loggings.sample_01 | INFO      |: I am info 
+2021-03-06 11:10:12,533 loggings.sample_01 | DEBUG     |: I am debug 
+2021-03-06 11:10:12,534 loggings.sample_01 | WARNING   |: I am warning 
+2021-03-06 11:10:12,534 loggings.sample_01 | ERROR     |: I am error 
+2021-03-06 11:10:12,534 loggings.sample_01 | CRITICAL  |: I am critical 
+2021-03-06 11:10:12,534 loggings.sample_01 | ERROR     |: 另外的文件调用logger输出错误信息. 
+2021-03-06 11:10:20,338 loggings.sample_01 | INFO      |: I am info 
+2021-03-06 11:10:20,338 loggings.sample_01 | DEBUG     |: I am debug 
+2021-03-06 11:10:20,338 loggings.sample_01 | WARNING   |: I am warning 
+2021-03-06 11:10:20,339 loggings.sample_01 | ERROR     |: I am error 
+2021-03-06 11:10:20,339 loggings.sample_01 | CRITICAL  |: I am critical 
+2021-03-06 11:10:20,339 loggings.sample_01 | ERROR     |: 另外的文件调用logger输出错误信息. 
+2021-03-06 11:10:41,688 loggings.sample_01 | INFO      |: I am info 
+2021-03-06 11:10:41,688 loggings.sample_01 | DEBUG     |: I am debug 
+2021-03-06 11:10:41,688 loggings.sample_01 | WARNING   |: I am warning 
+2021-03-06 11:10:41,689 loggings.sample_01 | ERROR     |: I am error 
+2021-03-06 11:10:41,689 loggings.sample_01 | CRITICAL  |: I am critical 
+2021-03-06 11:10:41,689 loggings.sample_01 | ERROR     |: 另外的文件调用logger输出错误信息. 
+2021-03-06 14:15:24,736 loggings.sample_01 | INFO      |: I am info 
+2021-03-06 14:15:24,737 loggings.sample_01 | DEBUG     |: I am debug 
+2021-03-06 14:15:24,737 loggings.sample_01 | WARNING   |: I am warning 
+2021-03-06 14:15:24,737 loggings.sample_01 | ERROR     |: I am error 
+2021-03-06 14:15:24,737 loggings.sample_01 | CRITICAL  |: I am critical 
+2021-03-06 14:15:24,737 loggings.sample_01 | ERROR     |: 另外的文件调用logger输出错误信息. 
+2021-03-06 14:15:34,125 loggings.sample_01 | INFO      |: I am info 
+2021-03-06 14:15:34,125 loggings.sample_01 | DEBUG     |: I am debug 
+2021-03-06 14:15:34,125 loggings.sample_01 | WARNING   |: I am warning 
+2021-03-06 14:15:34,125 loggings.sample_01 | ERROR     |: I am error 
+2021-03-06 14:15:34,125 loggings.sample_01 | CRITICAL  |: I am critical 
+2021-03-06 14:15:34,125 loggings.sample_01 | ERROR     |: 另外的文件调用logger输出错误信息. 
+2021-03-06 14:15:39,088 loggings.sample_01 | INFO      |: I am info 
+2021-03-06 14:15:39,089 loggings.sample_01 | DEBUG     |: I am debug 
+2021-03-06 14:15:39,089 loggings.sample_01 | WARNING   |: I am warning 
+2021-03-06 14:15:39,089 loggings.sample_01 | ERROR     |: I am error 
+2021-03-06 14:15:39,089 loggings.sample_01 | CRITICAL  |: I am critical 
+2021-03-06 14:15:39,089 loggings.sample_01 | ERROR     |: 另外的文件调用logger输出错误信息. 
+2021-03-06 14:15:45,279 loggings.sample_01 | INFO      |: I am info 
+2021-03-06 14:15:45,279 loggings.sample_01 | DEBUG     |: I am debug 
+2021-03-06 14:15:45,280 loggings.sample_01 | WARNING   |: I am warning 
+2021-03-06 14:15:45,280 loggings.sample_01 | ERROR     |: I am error 
+2021-03-06 14:15:45,280 loggings.sample_01 | CRITICAL  |: I am critical 
+2021-03-06 14:15:45,280 loggings.sample_01 | ERROR     |: 另外的文件调用logger输出错误信息. 
+2021-03-06 14:15:52,058 loggings.sample_01 | INFO      |: I am info 
+2021-03-06 14:15:52,058 loggings.sample_01 | DEBUG     |: I am debug 
+2021-03-06 14:15:52,058 loggings.sample_01 | WARNING   |: I am warning 
+2021-03-06 14:15:52,058 loggings.sample_01 | ERROR     |: I am error 
+2021-03-06 14:15:52,059 loggings.sample_01 | CRITICAL  |: I am critical 
+2021-03-06 14:15:52,059 loggings.sample_01 | ERROR     |: 另外的文件调用logger输出错误信息. 
+2021-03-06 14:15:55,131 loggings.sample_01 | INFO      |: I am info 
+2021-03-06 14:15:55,131 loggings.sample_01 | DEBUG     |: I am debug 
+2021-03-06 14:15:55,131 loggings.sample_01 | WARNING   |: I am warning 
+2021-03-06 14:15:55,131 loggings.sample_01 | ERROR     |: I am error 
+2021-03-06 14:15:55,131 loggings.sample_01 | CRITICAL  |: I am critical 
+2021-03-06 14:15:55,131 loggings.sample_01 | ERROR     |: 另外的文件调用logger输出错误信息. 

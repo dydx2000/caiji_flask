@@ -1,7 +1,7 @@
 def negetive(list1):
     j = len(list1) - 1
 
-    for i in range(len(list1) -1, 0, -1):
+    for i in range(len(list1) -1, -1, -1):
         # print("list i: ", list1[i])
         # print("list1 j: ", list1[j])
         if list1[i] > 0:
