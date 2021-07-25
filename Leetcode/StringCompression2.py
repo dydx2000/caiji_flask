@@ -16,6 +16,7 @@ for i in range(0, length-1):
 
 
 result = result + str1[length-1] + str(sum)
+# add format
 
 
 
