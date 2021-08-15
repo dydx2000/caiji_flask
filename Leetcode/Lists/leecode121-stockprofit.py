@@ -17,4 +17,4 @@ def maxprofit(prices):
 
 if __name__ == '__main__':
     prices = [2, 1, 5, 3, 6, 4, 9]
-    print(maxprofit(prices))
+    print(maxproft(prices))
