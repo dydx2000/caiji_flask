@@ -10,9 +10,12 @@ class Application(Frame):
         self.pack()
         self.creatWidget()
 
+
     def creatWidget(self):
 
         f1 =Frame(root)
+        root.grid_rowconfigure(1, weight=1, minsize=80)
+        root.grid_columnconfigure(0, weight=1, minsize=96)
         self.label01 = Label(f1, text='用户名').pack(side='left')
         self.v1 = StringVar()
         self.v1.set('admin')
